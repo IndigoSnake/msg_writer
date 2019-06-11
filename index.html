@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!-- cfb.js (C) 2013-present  SheetJS http://sheetjs.com -->
+<!-- vim: set ts=2: -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<title>Outlook Message Create Demo</title>
+</head>
+<body>
+
+<form>
+    <div class="form-group">
+        <label for="to">To...</label>
+        <input type="email" class="form-control" id="to" placeholder="name@example.com">
+    </div>
+    <div class="form-group">
+        <label for="cc">Cc...</label>
+        <input type="text" class="form-control" id="cc">
+    </div>
+    <div class="form-group">
+        <label for="cc">Subject</label>
+        <input type="text" class="form-control" id="subject">
+    </div>
+    <div class="form-group">
+        <label for="content">Content</label>
+        <textarea class="form-control" id="content" rows="10"></textarea>
+    </div>
+    <form>
+        <div class="form-group">
+            <label for="attach file1">Attach File1</label>
+            <input type="file" class="form-control-file" id="attach file1">
+        </div>
+    </form>
+    <form>
+        <div class="form-group">
+            <label for="attach file2">Attach File2</label>
+            <input type="file" class="form-control-file" id="attach file2">
+        </div>
+    </form>
+    <form>
+        <div class="form-group">
+            <label for="attach file3">Attach File3</label>
+            <input type="file" class="form-control-file" id="attach file3">
+        </div>
+    </form>
+
+</form>
+<a onclick="savefile('msg');" href="#">Create msg file</a>
+<!-- - <a id="savecfb" onclick="savefile('cfb');" href="#">Export data as CFB</a>-->
+
+<script src="dist/shim.js"></script>
+<script src="https://unpkg.com/printj/dist/printj.min.js"></script>
+<script src="dist/cfb.js"></script>
+<script src="https://rawgit.com/eligrey/Blob.js/master/Blob.js"></script>
+<script src="https://unpkg.com/filesaver.js/FileSaver.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+
+var savefile = (function() {
+
+	return function savefile(type) {
+		var data = "abcde";
+		saveAs(new Blob([data],{type:"binary"}), "OutlookMsg." + type);
+	};
+})();
+
+</script>
+</body>
+</html>
